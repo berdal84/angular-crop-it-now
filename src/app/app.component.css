@@ -8,6 +8,11 @@ p {
   padding:20px;
 }
 
+app-top-bar
+{
+  background-color: #2eac06;
+}
+
 /*
 Copyright Google LLC. All Rights Reserved.
 Use of this source code is governed by an MIT-style license that

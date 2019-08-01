@@ -9,11 +9,61 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
   templateUrl: './crop.component.html',
   styleUrls: ['./crop.component.css'],
 })
-export class CropComponent
-{
-  // todo: update a rectangle each time a rectangle corner is moved to visualize cropped erea
+
+export class CropComponent  {
+
+  uploadedFileNames: any = [];
+  imgURL: any;
+  showUploadContainer : any = true;
+  uploadMessage:any = "";
+
+  uploadFile(event) {
+    /* remove existing files (we only wants a single file to edit
+    * I keep an array because the original code was permitting multiple upload
+    * this feature could be usefull later to work on several PNG at the same time.
+    */
+    if ( this.uploadedFileNames.length > 0)
+    {
+      this.uploadedFileNames = [];
+    }
+
+    /* add the first dragged file (draggin multiple files is allowed by browsers, we ignore them)*/
+    if( event.length > 0)
+    {
+      const file = event[0];
+      this.uploadedFileNames.push(file.name);
+  
+      var mimeType = file.type;
+      if (mimeType.match(/image\/*/) != null) {  
+        var reader = new FileReader();
+        reader.readAsDataURL(file); 
+        reader.onload = (_event) => { 
+          this.imgURL = reader.result; 
+        }
+        this.uploadMessage = "Great! go to Step 2.";
+      }else{
+        this.uploadMessage = "Unable to upload this file because it is not an image.";
+      }
+    }else{
+      this.uploadMessage = "Upload problem !";
+    }
+
+    this.updateUploadContainerVisibility();
+  }
+
+  updateUploadContainerVisibility()
+  {
+    this.showUploadContainer = this.uploadedFileNames.length == 0;
+  }
+
+  deleteAttachment(index) {
+    this.uploadedFileNames.splice(index, 1)
+    this.updateUploadContainerVisibility();
+    this.uploadMessage = "File deleted, drag an other file to crop-it.";
+  }
 }
 
-/**  Copyright 2019 Google Inc. All Rights Reserved.
-    Use of this source code is governed by an MIT-style license that
-    can be found in the LICENSE file at http://angular.io/license */
+/*
+* original file by https://github.com/MariemChaabeni
+* modified by Bérenger Dalle-Cort
+*/

@@ -1,4 +1,23 @@
-<div class="droppable-area">
+<div [hidden]="!showUploadContainer" class="uploadfilecontainer" (click)="fileInput.click()" appDragDrop (onFileDropped)="uploadFile($event)">
+  <p>Drag-n drop a file or click to browse here</p>
+  <input hidden type="file" #fileInput (change)="uploadFile($event.target.files)">
+</div>
+<div  class="files-list" *ngFor="let file of uploadedFileNames;let i= index">
+    <img [src]="imgURL" height="50" *ngIf="imgURL">
+    <p> {{ file }} </p>
+    <button class="delete-file" (click)="deleteAttachment(i)">
+      <i class="material-icons">delete</i>
+    </button>    
+ </div>
+<p>{{uploadMessage}}</p>
+<!--
+/*
+* original file by https://github.com/MariemChaabeni
+* modified by Bérenger Dalle-Cort
+*/
+ -->
+
+<div class="droppable-area" [hidden]="showUploadContainer" >
   <div class="draggable-box" id="rect-corner-1" cdkDrag>C1</div>
   <div class="draggable-box" id="rect-corner-2" cdkDrag>C2</div>
   <p>To setup a crop rectangle<br/>use these two circles<br/>imagine them as two corners</p>

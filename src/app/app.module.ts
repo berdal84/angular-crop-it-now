@@ -7,7 +7,6 @@ import { AppComponent } from './app.component';
 import { TopBarComponent } from './top-bar/top-bar.component';
 import { HomeComponent } from './home/home.component';
 import { CropComponent } from './crop/crop.component';
-import { UploadFileComponent } from './upload-file/upload-file.component';
 import { DragDropDirective } from './drag-drop.directive';
 
 @NgModule({
@@ -16,8 +15,7 @@ import { DragDropDirective } from './drag-drop.directive';
     TopBarComponent,
     HomeComponent,
     CropComponent,
-    DragDropDirective,
-    UploadFileComponent
+    DragDropDirective    
   ],
   imports: [
     BrowserModule,

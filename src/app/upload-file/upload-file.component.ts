@@ -8,9 +8,9 @@ import { Component} from '@angular/core';
 export class UploadFileComponent  {
 
   files: any = [];
+  imgURL: any;
 
   uploadFile(event) {
-
     /* remove existing files (we only wants a single file to edit */
     if ( this.files.length > 0)
     {
@@ -20,8 +20,23 @@ export class UploadFileComponent  {
     /* add the first dragged file (draggin multiple files is allowed by browsers, we ignore them)*/
     if( event.length > 0)
     {
-      const element = event[0];
-      this.files.push(element.name);    
+      const file = event[0];
+      this.files.push(file.name);
+
+      if (this.files.length === 0)
+      return;
+  
+      var mimeType = file.type;
+      if (mimeType.match(/image\/*/) == null) {
+        // "Only images are supported.";
+        return;
+      }
+  
+      var reader = new FileReader();
+      reader.readAsDataURL(file); 
+      reader.onload = (_event) => { 
+        this.imgURL = reader.result; 
+      }    
     }
   }
 

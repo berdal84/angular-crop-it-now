@@ -3,12 +3,13 @@
   <input hidden type="file" #fileInput (change)="uploadFile($event.target.files)">
 </div>
 <div  class="files-list" *ngFor="let file of files;let i= index">
+    <img [src]="imgURL" height="50" *ngIf="imgURL">
     <p> {{ file }} </p>
     <button class="delete-file" (click)="deleteAttachment(i)">
       <i class="material-icons">delete</i>
     </button>
  </div>
- 
+
 <!--
 /*
 * original file by https://github.com/MariemChaabeni

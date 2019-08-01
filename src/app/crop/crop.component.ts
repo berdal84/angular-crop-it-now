@@ -17,6 +17,27 @@ export class CropComponent  {
   showUploadContainer : any = true;
   uploadMessage:any = "";
 
+  sendCropRequestToServer()
+  {
+    // WARNING ! - this is a mockup version, I need to program the serverside now...
+    var element = document.getElementById("crop-img");
+    var width   = element.clientWidth;
+    var height  = element.clientHeight;
+
+    var message = "";
+    message += "sendCropRequestToServer\n\n";
+  
+    message += "First corner in normalized UV relative to top-left corner:\n";
+    message += "crop.U1 = "+this.computeCropSelectionOriginX() / width+"\n";
+    message += "crop.V1 = "+this.computeCropSelectionOriginY() / height+"\n";
+    message += "\n";
+
+    message += "Second corner in normalized UV relative to top-left corner:\n";
+    message += "crop.U2 = "+ (this.computeCropSelectionWidth() + this.computeCropSelectionOriginX()) / width+"\n";
+    message += "crop.V2 = "+ (this.computeCropSelectionHeight() + this.computeCropSelectionOriginY() )/ height+"\n";
+
+    alert(message);
+  }
 
   uploadFile(event) {
     /* remove existing files (we only wants a single file to edit
@@ -63,6 +84,24 @@ export class CropComponent  {
     // set width and height
     crop_selection.style.width = this.computeCropSelectionWidth() + "px";
     crop_selection.style.height = this.computeCropSelectionHeight() + "px";
+  }
+
+  computeCropSelectionOriginX() {
+    var corner1 = document.getElementById("crop-corner-1");
+
+    var style1 = window.getComputedStyle(corner1);
+    var matrix1 = new WebKitCSSMatrix(style1.webkitTransform);
+
+    return matrix1.m41;
+  }
+
+  computeCropSelectionOriginY() {
+    var corner1 = document.getElementById("crop-corner-1");
+
+    var style1 = window.getComputedStyle(corner1);
+    var matrix1 = new WebKitCSSMatrix(style1.webkitTransform);
+
+    return matrix1.m42;
   }
 
   computeCropSelectionWidth() {

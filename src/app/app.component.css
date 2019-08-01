@@ -6,6 +6,10 @@ p {
 .content
 {
   padding:20px;
+  margin: auto;
+  max-width: 500px;
+  box-shadow: 0px 0px 10px #888;
+  height: 100%;
 }
 
 app-top-bar

@@ -25,7 +25,7 @@
     <div (mousemove)="updateCropSelection($event)" class="crop-corner" id="crop-corner-2" cdkDragBoundary=".crop-workspace" cdkDrag></div>
     <div class="crop-selection" id="crop-selection" ></div>  
     <img [src]="imgURL" *ngIf="imgURL" id="crop-img">    
-    <a class="button fancy-button" id="crop-button"><i class="material-icons">crop</i> CROP-IT</a>   
+    <a class="button fancy-button" id="crop-button" (click)="sendCropRequestToServer()"><i class="material-icons">crop</i> CROP-IT</a>   
   </div> 
   
 </div>

@@ -1,7 +1,7 @@
 
 
 #crop-button {
-  border-radius : 0px 0px 10px 10px;
+  border-radius : 10px;
   position:relative;
   left:70%;
   bottom:0px;
@@ -21,14 +21,10 @@
 .crop-workspace {
   width:100%;
   padding: 0px;  
-  border-radius: 0px;
-  background-color:#ddd;
-  border: solid 1px #2eac06;
-  box-shadow: 2px 2px 2px #aaa5;
-  height: 400px;
+  height:1000px;
 }
 
-.crop-workspace *
+.crop-workspace div
 {
   position:absolute;
 }
@@ -36,13 +32,12 @@
 .crop-workspace img
 {
   width:100%;
-  padding-right:40px;
 }
 
 .crop-selection
 {
   box-shadow: rgb(0, 0, 0) 0px 0px 5px;
-  border: dashed 3px #ff;
+  border: dashed 3px #fff;
   width:50px;
   height:50px;
 }

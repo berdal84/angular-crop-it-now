@@ -16,8 +16,7 @@ export class CropComponent  {
   imgURL: any;
   showUploadContainer : any = true;
   uploadMessage:any = "";
-  corner_1_top: any = "50px";
-  corner_1_left: any = "50px";
+
 
   uploadFile(event) {
     /* remove existing files (we only wants a single file to edit
@@ -40,9 +39,10 @@ export class CropComponent  {
         var reader = new FileReader();
         reader.readAsDataURL(file); 
         reader.onload = (_event) => { 
-          this.imgURL = reader.result; 
+          this.imgURL = reader.result;
+
         }
-        this.uploadMessage = "Great! go to Step 2.";
+        this.uploadMessage = "Great! The PNG file is ready to use.";
       }else{
         this.uploadMessage = "Unable to upload this file because it is not an image.";
       }
@@ -55,11 +55,40 @@ export class CropComponent  {
 
   updateCropSelection(event)
   {
-    this.uploadMessage = "updateCropSelection";
-    document.getElementById("crop-selection").style.left = document.getElementById("crop-corner-1").style.left;
-    document.getElementById("crop-selection").style.top = document.getElementById("crop-corner-1").style.top;
-    document.getElementById("crop-selection").style.transform = document.getElementById("crop-corner-1").style.transform;
+    // Align origin with the first corner
+    var crop_selection = document.getElementById("crop-selection");
+    var corner1 = document.getElementById("crop-corner-1");
+    crop_selection.style.transform = corner1.style.transform;
 
+    // set width and height
+    crop_selection.style.width = this.computeCropSelectionWidth() + "px";
+    crop_selection.style.height = this.computeCropSelectionHeight() + "px";
+  }
+
+  computeCropSelectionWidth() {
+    var corner1 = document.getElementById("crop-corner-1");
+    var corner2 = document.getElementById("crop-corner-2");
+
+    var style1 = window.getComputedStyle(corner1);
+    var matrix1 = new WebKitCSSMatrix(style1.webkitTransform);
+
+    var style2 = window.getComputedStyle(corner2);
+    var matrix2 = new WebKitCSSMatrix(style2.webkitTransform);
+
+    return matrix2.m41 - matrix1.m41;
+  }
+
+  computeCropSelectionHeight() {
+    var corner1 = document.getElementById("crop-corner-1");
+    var corner2 = document.getElementById("crop-corner-2");
+
+    var style1 = window.getComputedStyle(corner1);
+    var matrix1 = new WebKitCSSMatrix(style1.webkitTransform);
+
+    var style2 = window.getComputedStyle(corner2);
+    var matrix2 = new WebKitCSSMatrix(style2.webkitTransform);
+
+    return matrix2.m42 - matrix1.m42;
   }
 
   updateUploadContainerVisibility()

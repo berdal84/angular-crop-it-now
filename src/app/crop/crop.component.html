@@ -18,12 +18,14 @@
  -->
 
 <div *ngIf="!showUploadContainer">
-  <div class="crop-workspace">
-    <img [src]="imgURL" *ngIf="imgURL">
+  <p>Use handles to setup the crop area, then click on CROP-IT.</p>
+  
+  <div class="crop-workspace" id="crop-workspace">
     <div (mousemove)="updateCropSelection($event)" class="crop-corner" id="crop-corner-1" cdkDragBoundary=".crop-workspace" cdkDrag></div>
-    <div (mousemove)="updateCropSelection($event)" class="crop-corner" id="crop-corner-2" cdkDragBoundary=".crop-workspace" cdkDrag></div>  
-    <div class="crop-selection" id="crop-selection" ></div> 
-  </div>
-  <a class="button fancy-button" id="crop-button"><i class="material-icons">crop</i> CROP-IT</a>
-  <p>To setup a crop rectangle<br/>use these two circles<br/>imagine them as two corners</p>
+    <div (mousemove)="updateCropSelection($event)" class="crop-corner" id="crop-corner-2" cdkDragBoundary=".crop-workspace" cdkDrag></div>
+    <div class="crop-selection" id="crop-selection" ></div>  
+    <img [src]="imgURL" *ngIf="imgURL" id="crop-img">    
+    <a class="button fancy-button" id="crop-button"><i class="material-icons">crop</i> CROP-IT</a>   
+  </div> 
+  
 </div>

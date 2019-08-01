@@ -72,7 +72,7 @@ export class CropComponent  {
           corner1.style.transform = "translate3d(0px, 0px, 0px);";
 
           var corner2 = document.getElementById("crop-corner-2");
-          corner2.style.transform = "translate3d(100px, 100px, 0px);";
+          corner2.style.transform = "translate3d(100px, 100px, 0px);";*/
         }
         this.uploadMessage = "Great! The PNG file is ready to use.";
       }else{

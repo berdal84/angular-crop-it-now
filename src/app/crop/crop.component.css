@@ -19,7 +19,8 @@
   Droppable area related styles
 */
 .crop-workspace {
-  padding: 10px;  
+  width:100%;
+  padding: 0px;  
   border-radius: 0px;
   background-color:#ddd;
   border: solid 1px #2eac06;
@@ -32,10 +33,16 @@
   position:absolute;
 }
 
+.crop-workspace img
+{
+  width:100%;
+  padding-right:40px;
+}
+
 .crop-selection
 {
   box-shadow: rgb(0, 0, 0) 0px 0px 5px;
-  border: dashed 3px #2eac06;
+  border: dashed 3px #ff;
   width:50px;
   height:50px;
 }

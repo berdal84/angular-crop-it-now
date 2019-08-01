@@ -7,8 +7,18 @@ import { AppComponent } from './app.component';
 import { TopBarComponent } from './top-bar/top-bar.component';
 import { HomeComponent } from './home/home.component';
 import { CropComponent } from './crop/crop.component';
+import { UploadFileComponent } from './upload-file/upload-file.component';
+import { DragDropDirective } from './drag-drop.directive';
 
 @NgModule({
+  declarations: [
+    AppComponent,
+    TopBarComponent,
+    HomeComponent,
+    CropComponent,
+    DragDropDirective,
+    UploadFileComponent
+  ],
   imports: [
     BrowserModule,
     ReactiveFormsModule,
@@ -16,13 +26,7 @@ import { CropComponent } from './crop/crop.component';
     RouterModule.forRoot([
       { path: '', component: HomeComponent },
     ])
-  ],
-  declarations: [
-    AppComponent,
-    TopBarComponent,
-    HomeComponent,
-    CropComponent
-  ],
+  ],  
   bootstrap: [ AppComponent  ]
 })
 export class AppModule { }

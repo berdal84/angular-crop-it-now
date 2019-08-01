@@ -20,8 +20,8 @@
 <div *ngIf="!showUploadContainer">
   <div class="crop-workspace">
     <img [src]="imgURL" *ngIf="imgURL">
-    <div class="crop-corner" id="rect-corner-1" cdkDrag></div>
-    <div class="crop-corner" id="rect-corner-2" cdkDrag></div>  
+    <div class="crop-corner" id="rect-corner-1" cdkDragBoundary=".crop-workspace" cdkDrag></div>
+    <div class="crop-corner" id="rect-corner-2" cdkDragBoundary=".crop-workspace" cdkDrag></div>  
     <div class="crop-selection" id="crop-selection"></div> 
   </div>
   <a class="button fancy-button" id="crop-button"><i class="material-icons">crop</i> CROP-IT</a>

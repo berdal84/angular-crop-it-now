@@ -16,6 +16,8 @@ export class CropComponent  {
   imgURL: any;
   showUploadContainer : any = true;
   uploadMessage:any = "";
+  corner_1_top: any = "50px";
+  corner_1_left: any = "50px";
 
   uploadFile(event) {
     /* remove existing files (we only wants a single file to edit
@@ -49,6 +51,15 @@ export class CropComponent  {
     }
 
     this.updateUploadContainerVisibility();
+  }
+
+  updateCropSelection(event)
+  {
+    this.uploadMessage = "updateCropSelection";
+    document.getElementById("crop-selection").style.left = document.getElementById("crop-corner-1").style.left;
+    document.getElementById("crop-selection").style.top = document.getElementById("crop-corner-1").style.top;
+    document.getElementById("crop-selection").style.transform = document.getElementById("crop-corner-1").style.transform;
+
   }
 
   updateUploadContainerVisibility()

@@ -3,18 +3,34 @@ p {
   font-family: Lato;
 }
 
+.credits
+{
+  padding-top:10px;
+  text-align:right;
+  color:#bbb;
+  font-style: italic;
+}
+
 .content
 {
-  padding:20px;
+  padding:20px;  
   margin: auto;
   max-width: 500px;
   box-shadow: 0px 0px 10px #888;
   height: 100%;
+  text-align: justify;
+  text-justify: inter-word;
+}
+
+.separator
+{
+  height:0px;
 }
 
 app-top-bar
 {
-  background-color: #2eac06;
+  background-color: #2eac06;  
+  box-shadow: 2px 2px 5px #5558;
 }
 
 /*

@@ -62,6 +62,17 @@ export class CropComponent  {
         reader.onload = (_event) => { 
           this.imgURL = reader.result;
 
+          // get img client width and height
+          var element = document.getElementById("crop-img");  
+          var width   = element.clientWidth;
+          var height  = element.clientHeight;
+
+          /* reset corner positions to match the entire picture
+          var corner1 = document.getElementById("crop-corner-1");
+          corner1.style.transform = "translate3d(0px, 0px, 0px);";
+
+          var corner2 = document.getElementById("crop-corner-2");
+          corner2.style.transform = "translate3d(100px, 100px, 0px);";
         }
         this.uploadMessage = "Great! The PNG file is ready to use.";
       }else{

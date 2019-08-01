@@ -22,8 +22,8 @@
   width: 100%;
   min-height: 200px;
   padding: 20px;
-  border: dashed #bbb;
-  border-radius: 20px
+  border: 3px dashed #2eac06;
+  border-radius: 10px;
 }
 
 .droppable-area p

@@ -1,15 +1,15 @@
-<div class="uploadfilecontainer" (click)="fileInput.click()" appDragDrop (onFileDropped)="uploadFile($event)">
+<div [hidden]="!showUploadContainer" class="uploadfilecontainer" (click)="fileInput.click()" appDragDrop (onFileDropped)="uploadFile($event)">
   <p>Drag-n drop a file or click to browse here</p>
   <input hidden type="file" #fileInput (change)="uploadFile($event.target.files)">
 </div>
-<div  class="files-list" *ngFor="let file of files;let i= index">
+<div  class="files-list" *ngFor="let file of uploadedFileNames;let i= index">
     <img [src]="imgURL" height="50" *ngIf="imgURL">
     <p> {{ file }} </p>
     <button class="delete-file" (click)="deleteAttachment(i)">
       <i class="material-icons">delete</i>
-    </button>
+    </button>    
  </div>
-
+<p>{{uploadMessage}}</p>
 <!--
 /*
 * original file by https://github.com/MariemChaabeni

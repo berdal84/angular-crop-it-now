@@ -7,41 +7,54 @@ import { Component} from '@angular/core';
 })
 export class UploadFileComponent  {
 
-  files: any = [];
+  uploadedFileNames: any = [];
   imgURL: any;
+  showUploadContainer : any = true;
+  uploadMessage:any = "";
 
   uploadFile(event) {
-    /* remove existing files (we only wants a single file to edit */
-    if ( this.files.length > 0)
+    /* remove existing files (we only wants a single file to edit
+    * I keep an array because the original code was permitting multiple upload
+    * this feature could be usefull later to work on several PNG at the same time.
+    */
+    if ( this.uploadedFileNames.length > 0)
     {
-      this.files = [];
+      this.uploadedFileNames = [];
     }
 
     /* add the first dragged file (draggin multiple files is allowed by browsers, we ignore them)*/
     if( event.length > 0)
     {
       const file = event[0];
-      this.files.push(file.name);
-
-      if (this.files.length === 0)
-      return;
+      this.uploadedFileNames.push(file.name);
   
       var mimeType = file.type;
-      if (mimeType.match(/image\/*/) == null) {
-        // "Only images are supported.";
-        return;
+      if (mimeType.match(/image\/*/) != null) {  
+        var reader = new FileReader();
+        reader.readAsDataURL(file); 
+        reader.onload = (_event) => { 
+          this.imgURL = reader.result; 
+        }
+        this.uploadMessage = "Great! go to Step 2.";
+      }else{
+        this.uploadMessage = "Unable to upload this file because it is not an image.";
       }
-  
-      var reader = new FileReader();
-      reader.readAsDataURL(file); 
-      reader.onload = (_event) => { 
-        this.imgURL = reader.result; 
-      }    
+    }else{
+      this.uploadMessage = "Upload problem !";
     }
+
+    this.updateUploadContainerVisibility();
+  }
+
+  updateUploadContainerVisibility()
+  {
+    this.showUploadContainer = this.uploadedFileNames.length == 0;
   }
 
   deleteAttachment(index) {
-    this.files.splice(index, 1)
+    this.uploadedFileNames.splice(index, 1)
+    this.updateUploadContainerVisibility();
+    this.uploadMessage = "File deleted, drag an other file to crop-it.";
   }
 }
 

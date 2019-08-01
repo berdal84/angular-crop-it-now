@@ -9,11 +9,12 @@
   background-repeat: no-repeat;
   background-size: 100px;
   background-position: center;
-  height: 50px;
+  height: 60px;
   width: 100%;
   margin-bottom: 10px;
   border: 3px dashed #2eac06;
   border-radius: 10px;  
+  padding:5px;
 }
 
 .uploadfilecontainer p
@@ -39,7 +40,7 @@
   border-radius: 4px;
   padding-left: 15px;
   padding-right: 5px;
-  
+  padding:5px;
 }
 
 .files-list .delete-file {
@@ -48,5 +49,5 @@
   cursor: pointer;
 }
 .files-list .delete-file img{
-  width:40px;
+  width:50px;
 }

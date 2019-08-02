@@ -1,4 +1,4 @@
-# angular-crop-it-now
+# Crop-it NOW !
 
 Intro
 =====
